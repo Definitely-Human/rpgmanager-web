@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  web-client:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      # Only will build development stage from our dockerfile
+      target: development
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    environment:
+      - NODE_ENV=dev
+    # Run a command against the development stage of the image
+    command: npm run dev
+    ports:
+      - '5173:5173'
+    restart: always
+    container_name: web-client_container
+    networks:
+      - sharedNet
+
+networks:
+  sharedNet:

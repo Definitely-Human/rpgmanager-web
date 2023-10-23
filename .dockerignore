@@ -1,0 +1,16 @@
+# Versioning and metadata
+.git
+.gitignore
+
+# Build dependencies
+dist
+node_modules
+coverage
+
+# Files not required for production
+.vscode
+.editorconfig
+Dockerfile
+README.md
+tslint.json
+nodemon.json

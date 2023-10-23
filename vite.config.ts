@@ -16,4 +16,10 @@ export default defineConfig({
     // since parsing CSS is slow
     css: true,
   },
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true,
+  },
 });
