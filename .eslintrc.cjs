@@ -26,5 +26,9 @@ module.exports = {
       'ignorePackages',
       { js: 'always', jsx: 'always', ts: 'always', tsx: 'always' },
     ],
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
   },
 };
