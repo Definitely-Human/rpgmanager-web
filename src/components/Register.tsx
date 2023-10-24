@@ -29,19 +29,19 @@ const Register = () => {
   const onCompleted = (data: CreateAccountMutation) => {
     const {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      createAccount: { ok, error },
+      createAccount: { ok, error }, // TODO: Add toast for error or success
     } = data;
     if (ok) {
-      navigate('/');
+      navigate('login');
     }
   };
 
-  const [
-    createAccountMutation,
-    { data: createAccountMutationResult, loading: isLoading },
-  ] = useMutation(CREATE_ACCOUNT_MUTATION, {
-    onCompleted,
-  });
+  const [createAccountMutation, { loading: isLoading }] = useMutation(
+    CREATE_ACCOUNT_MUTATION,
+    {
+      onCompleted,
+    }
+  );
   const onSubmit = () => {
     if (!isLoading) {
       const { username, email, password } = getValues();
@@ -57,39 +57,53 @@ const Register = () => {
     }
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid w-full gap-3 my-5 text-center"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="grid w-full gap-2 my-5">
       <label
         htmlFor="username"
         className="block text-xl capitalize cursor-pointer"
       >
         Username
         <input
-          {...register('username', { required: 'Username is required.' })}
+          {...register('username', {
+            required: 'Username is required.',
+            maxLength: {
+              value: 50,
+              message: 'Maximum length is 50 characters.',
+            },
+            minLength: {
+              value: 4,
+              message: 'Minimum length is 4 characters.',
+            },
+          })}
           type="text"
           required
+          minLength={4}
+          maxLength={50}
           id="username"
-          placeholder="Username"
-          className="mt-2 input"
+          className="mt-1 input"
         />
       </label>
       {formState.errors.username?.message && (
         <FormError errorMessage={formState.errors.username?.message} />
       )}
 
-      <input
-        {...register('email', {
-          required: 'Email is required.',
-          pattern:
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        })}
-        type="email"
-        required
-        placeholder="Email"
-        className="input"
-      />
+      <label
+        htmlFor="email"
+        className="block text-xl capitalize cursor-pointer"
+      >
+        Email
+        <input
+          {...register('email', {
+            required: 'Email is required.',
+            pattern:
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          })}
+          type="email"
+          required
+          id="email"
+          className="mt-1 input"
+        />
+      </label>
       {formState.errors.email?.message && (
         <FormError errorMessage={formState.errors.email?.message} />
       )}
@@ -97,28 +111,66 @@ const Register = () => {
         <FormError errorMessage="Please enter a valid email." />
       )}
 
-      <input
-        {...register('password', {
-          required: 'Password is required.',
-        })}
-        type="password"
-        required
-        placeholder="Password"
-        className="input"
-      />
+      <label
+        htmlFor="password"
+        className="block text-xl capitalize cursor-pointer"
+      >
+        Password
+        <input
+          {...register('password', {
+            required: 'Password is required.',
+            maxLength: {
+              value: 255,
+              message: 'Maximum length is 255 characters.',
+            },
+            minLength: {
+              value: 8,
+              message: 'Minimum length is 8 characters.',
+            },
+          })}
+          type="password"
+          id="password"
+          required
+          minLength={8}
+          maxLength={255}
+          className="input"
+        />
+      </label>
       {formState.errors.password?.message && (
         <FormError errorMessage={formState.errors.password?.message} />
       )}
 
-      <input
-        {...register('passwordConfirm', {
-          required: 'Password confirmation is required.',
-        })}
-        type="password"
-        required
-        placeholder="Confirm Password"
-        className="input"
-      />
+      <label
+        htmlFor="confirmPassword"
+        className="block text-xl capitalize cursor-pointer"
+      >
+        Confirm Password
+        <input
+          {...register('passwordConfirm', {
+            required: 'Password confirmation is required.',
+            maxLength: {
+              value: 255,
+              message: 'Maximum length is 255 characters.',
+            },
+            minLength: {
+              value: 8,
+              message: 'Minimum length is 8 characters.',
+            },
+            validate: (value) => {
+              return (
+                value === getValues().password || 'Passwords do not match.'
+              );
+            },
+            deps: ['password'],
+          })}
+          type="password"
+          required
+          id="confirmPassword"
+          minLength={8}
+          maxLength={255}
+          className="input"
+        />
+      </label>
       {formState.errors.passwordConfirm?.message && (
         <FormError errorMessage={formState.errors.passwordConfirm?.message} />
       )}
@@ -130,11 +182,6 @@ const Register = () => {
       >
         {isLoading ? 'Loading...' : 'Register'}
       </button>
-      {createAccountMutationResult?.createAccount.error && (
-        <FormError
-          errorMessage={createAccountMutationResult.createAccount.error}
-        />
-      )}
     </form>
   );
 };

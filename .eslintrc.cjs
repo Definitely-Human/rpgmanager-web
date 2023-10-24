@@ -9,7 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'src/__generated__'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'prettier', '@typescript-eslint'],
   parserOptions: {

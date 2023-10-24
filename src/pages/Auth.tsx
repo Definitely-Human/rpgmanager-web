@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { isLoggedInVar } from '../apollo.ts';
 import Logo from '../components/Logo.tsx';
 
 const Auth = () => {
@@ -8,6 +9,7 @@ const Auth = () => {
   const isMember = location.pathname === '/auth/login';
 
   if (location.pathname === '/auth') return <Navigate to="login" />;
+  if (isLoggedInVar()) return <Navigate to="/play" />;
 
   const toggleMember = () => {
     if (isMember) navigate('/auth/register');
@@ -29,7 +31,7 @@ const Auth = () => {
           <button
             type="button"
             onClick={toggleMember}
-            className="pl-3 text-secondary"
+            className="pl-3 text-secondary hover:text-secondary-600 "
           >
             {isMember ? 'Register' : 'Login'}
           </button>
