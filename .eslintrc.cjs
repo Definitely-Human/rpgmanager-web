@@ -30,5 +30,6 @@ module.exports = {
       2,
       { namedComponents: 'arrow-function' },
     ],
+    'react/jsx-props-no-spreading': [0],
   },
 };

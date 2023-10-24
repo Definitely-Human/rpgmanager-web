@@ -4,6 +4,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import Login from './components/Login.tsx';
+import Register from './components/Register.tsx';
 import {
   Auth,
   Error,
@@ -33,7 +35,10 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
-      <Route path="auth" element={<Auth />} />
+      <Route path="auth" element={<Auth />}>
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+      </Route>
       <Route path="*" element={<Error />} />
     </Route>
   )

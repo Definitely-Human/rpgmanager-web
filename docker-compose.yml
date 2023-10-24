@@ -15,7 +15,7 @@ services:
     # Run a command against the development stage of the image
     command: npm run dev
     ports:
-      - '5173:5173'
+      - '5174:5173'
     restart: always
     container_name: web-client_container
     networks:

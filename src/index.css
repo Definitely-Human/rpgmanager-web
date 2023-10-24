@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
+
+.input {
+  @apply h-9 rounded bg-slate-200 w-full text-gray-900 px-3 text-lg focus:outline-none focus:ring focus:ring-secondary-600;
+}
+
 @tailwind utilities;
