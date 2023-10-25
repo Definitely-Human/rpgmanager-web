@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../components/Sidebar.tsx';
 import TopBar from '../components/TopBar.tsx';
 
 const Play = () => {
@@ -8,6 +10,10 @@ const Play = () => {
         <title> Play | RPG Manager</title>
       </Helmet>
       <TopBar />
+      <div className="grid grid-cols-[60px_1fr] h-full">
+        <Sidebar />
+        <Outlet />
+      </div>
     </div>
   );
 };

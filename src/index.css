@@ -2,7 +2,11 @@
 @tailwind components;
 
 .input {
-  @apply h-9 rounded bg-slate-200 w-full text-gray-900 px-3 text-lg focus:outline-none focus:ring focus:ring-secondary-600;
+  @apply w-full px-3 text-lg text-gray-900 rounded h-9 bg-slate-200 focus:outline-none focus:ring focus:ring-secondary-600;
+}
+
+#sidebar .active {
+  @apply bg-primary-400;
 }
 
 @tailwind utilities;

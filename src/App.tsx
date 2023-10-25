@@ -4,6 +4,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import Character from './pages/Character.tsx';
+import PlayMain from './pages/PlayMain.tsx';
+import Statistics from './pages/Statistics.tsx';
 import {
   Auth,
   Error,
@@ -26,7 +29,11 @@ const router = createBrowserRouter(
             <Play />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route index element={<PlayMain />} />
+        <Route path="character" element={<Character />} />
+        <Route path="stats" element={<Statistics />} />
+      </Route>
       <Route
         path="profile"
         element={
