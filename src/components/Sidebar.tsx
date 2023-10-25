@@ -7,8 +7,11 @@ const icons = [<GiChecklist />, <GiCharacter />, <IoIosStats />];
 
 const Sidebar = () => {
   return (
-    <nav id="sidebar" className="relative bg-gray-blue-800">
-      <div className="absolute top-[50%] translate-y-[-50%]">
+    <nav
+      id="sidebar"
+      className="relative border-r-2 border-gray-900 bg-gray-blue-900"
+    >
+      <div className="absolute top-[50%] w-full translate-y-[-50%]">
         {links.map((value, index) => {
           return (
             <NavLink
