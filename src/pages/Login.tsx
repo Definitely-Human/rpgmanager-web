@@ -1,9 +1,10 @@
 import { gql, useLazyQuery } from '@apollo/client';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { My_LoginQuery } from '../__generated__/graphql.ts';
 import { authTokenVar, isLoggedInVar } from '../apollo.ts';
+import FormError from '../components/FormError.tsx';
 import { LOCAL_STORAGE_TOKEN } from '../constants.ts';
-import FormError from './FormError.tsx';
 
 const LOGIN_QUERY = gql(/* GraphQL */ `
   query my_login($loginInput: LoginInput!) {
@@ -21,8 +22,9 @@ interface ILoginForm {
 }
 
 const Login = () => {
-  const { register, getValues, formState, handleSubmit } =
-    useForm<ILoginForm>();
+  const { register, getValues, formState, handleSubmit } = useForm<ILoginForm>({
+    mode: 'onChange',
+  });
 
   const onCompleted = (data: My_LoginQuery) => {
     const {
@@ -55,6 +57,9 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid w-full gap-2 my-5">
+      <Helmet>
+        <title> Login | RPG Manager</title>
+      </Helmet>
       <label htmlFor="username" className="block text-xl cursor-pointer">
         Username or Email
         <input

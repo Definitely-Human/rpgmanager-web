@@ -4,15 +4,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Login from './components/Login.tsx';
-import Register from './components/Register.tsx';
 import {
   Auth,
   Error,
   Home,
+  Login,
   Play,
   Profile,
   ProtectedRoute,
+  Register,
 } from './pages/index.ts';
 
 const router = createBrowserRouter(

@@ -1,9 +1,10 @@
 import { useMutation } from '@apollo/client';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { CreateAccountMutation } from '../__generated__/graphql.ts';
 import { gql } from '../__generated__/index.ts';
-import FormError from './FormError.tsx';
+import FormError from '../components/FormError.tsx';
 
 const CREATE_ACCOUNT_MUTATION = gql(/* GraphQL */ `
   mutation createAccount($createAccountInput: CreateAccountInput!) {
@@ -24,7 +25,7 @@ interface IRegisterForm {
 const Register = () => {
   const navigate = useNavigate();
   const { register, getValues, formState, handleSubmit } =
-    useForm<IRegisterForm>();
+    useForm<IRegisterForm>({ mode: 'onChange' });
 
   const onCompleted = (data: CreateAccountMutation) => {
     const {
@@ -32,7 +33,7 @@ const Register = () => {
       createAccount: { ok, error }, // TODO: Add toast for error or success
     } = data;
     if (ok) {
-      navigate('login');
+      navigate('/auth/login');
     }
   };
 
@@ -58,6 +59,9 @@ const Register = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid w-full gap-2 my-5">
+      <Helmet>
+        <title> Register | RPG Manager</title>
+      </Helmet>
       <label
         htmlFor="username"
         className="block text-xl capitalize cursor-pointer"

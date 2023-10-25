@@ -1,3 +1,4 @@
+import { useReactiveVar } from '@apollo/client';
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { isLoggedInVar } from '../apollo.ts';
 import Logo from '../components/Logo.tsx';
@@ -5,11 +6,12 @@ import Logo from '../components/Logo.tsx';
 const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
 
   const isMember = location.pathname === '/auth/login';
 
   if (location.pathname === '/auth') return <Navigate to="login" />;
-  if (isLoggedInVar()) return <Navigate to="/play" />;
+  if (isLoggedIn) return <Navigate to="/play" />;
 
   const toggleMember = () => {
     if (isMember) navigate('/auth/register');
