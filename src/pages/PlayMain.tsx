@@ -8,7 +8,7 @@ import RemindersList from '../components/ReminderList.tsx';
 
 const PlayMain = () => {
   return (
-    <main className="grid grid-cols-[1fr_3fr_1fr]">
+    <main className="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr_1fr] max-h-[calc(100vh-4rem)]">
       <div className="bg-gray-blue-800 border-r-2 border-gray-900 grid grid-rows-[1fr_3fr_1fr] min-h-0 min-w-0">
         <ModuleBlock name="Filtering options">
           <FilteringOptions />
@@ -26,7 +26,7 @@ const PlayMain = () => {
         </ModuleBlock>
         <EditorSelector />
       </div>
-      <div className="border-l-2 border-gray-900 bg-gray-blue-800">
+      <div className="hidden border-l-2 border-gray-900 md:block bg-gray-blue-800">
         <ModuleBlock name="Character">
           <CharacterStats />
         </ModuleBlock>

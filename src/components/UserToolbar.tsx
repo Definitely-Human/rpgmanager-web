@@ -16,7 +16,9 @@ const UserToolbar = () => {
   if (loading) return <h2 className="text-2xl">Loading...</h2>;
   return (
     <div className="flex items-center">
-      <h5>Hello, {user?.username}</h5>
+      <h5 className="hidden lg:block">
+        Hello, <span className="text-secondary">{user?.username}</span>
+      </h5>
       <img
         src={charIcon}
         className="w-12 mx-2 border-2 border-gray-900 rounded-full "

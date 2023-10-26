@@ -77,7 +77,7 @@ const Login = () => {
           type="text"
           required
           minLength={4}
-          maxLength={50}
+          maxLength={320}
           id="username"
           className="mt-1 input"
         />

@@ -5,12 +5,14 @@ import {
   makeVar,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { Category } from './__generated__/graphql.ts';
 import { LOCAL_STORAGE_TOKEN } from './constants.ts';
 
 const token = localStorage.getItem(LOCAL_STORAGE_TOKEN);
 
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
+export const selectedCategoryVar = makeVar<Category | null>(null);
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3000/graphql',
@@ -39,6 +41,11 @@ export const client = new ApolloClient({
           token: {
             read() {
               return authTokenVar();
+            },
+          },
+          selectedCategory: {
+            read() {
+              return selectedCategoryVar();
             },
           },
         },

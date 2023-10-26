@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Character from './pages/Character.tsx';
 import PlayMain from './pages/PlayMain.tsx';
 import Statistics from './pages/Statistics.tsx';
@@ -52,7 +53,12 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer position="top-center" />
+    </>
+  );
 };
 
 export default App;
