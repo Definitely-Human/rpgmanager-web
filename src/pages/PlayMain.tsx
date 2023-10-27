@@ -2,9 +2,9 @@ import CategoriesList from '../components/CategoriesList.tsx';
 import CharacterStats from '../components/CharacterStats.tsx';
 import EditorSelector from '../components/EditorSelector.tsx';
 import FilteringOptions from '../components/FilteringOptions.tsx';
-import ItemList from '../components/ItemList.tsx';
 import ModuleBlock from '../components/ModuleBlock.tsx';
 import RemindersList from '../components/ReminderList.tsx';
+import ResultsList from '../components/ResultsList.tsx';
 
 const PlayMain = () => {
   return (
@@ -22,7 +22,7 @@ const PlayMain = () => {
       </div>
       <div className="bg-gray-blue-900 grid grid-rows-[2fr_3fr] min-h-0 min-w-0">
         <ModuleBlock>
-          <ItemList />
+          <ResultsList />
         </ModuleBlock>
         <EditorSelector />
       </div>

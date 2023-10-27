@@ -14,3 +14,26 @@ export const ALL_CATEGORIES_QUERY = gql(/* GraphQL */ `
     }
   }
 `);
+
+export const ALL_TASKS_BY_CATEGORY = gql(/* GraphQL */ `
+  query getAllTasksByCategory($input: GetTasksInput) {
+    getTasks(input: $input) {
+      ok
+      error
+      tasks {
+        id
+        content
+        title
+        due_to
+        completion_time
+        is_complete
+        is_deleted
+        is_favorite
+        category {
+          id
+          name
+        }
+      }
+    }
+  }
+`);
