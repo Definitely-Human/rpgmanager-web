@@ -21,14 +21,9 @@ const CategoryItem = ({ item }: CategoryItemProps) => {
     if (data) {
       const newSubcategories = data?.getCategories?.categories?.filter(
         (category) => {
-          console.log(
-            '🚀 ~ file: CategoryItem.tsx:24 ~ useEffect ~ category:',
-            category
-          );
           return category.parentCategoryId === id;
         }
       );
-      console.log(id);
       setSubCategories(newSubcategories as Category[]);
     }
   }, [data, id]);

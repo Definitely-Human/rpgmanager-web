@@ -1,9 +1,15 @@
 import { GiCharacter, GiChecklist } from 'react-icons/gi';
 import { IoIosStats } from 'react-icons/io';
+import { RiCalendarTodoFill } from 'react-icons/ri';
 import { NavLink } from 'react-router-dom';
 
-const links = ['/play', '/play/character', '/play/stats'];
-const icons = [<GiChecklist />, <GiCharacter />, <IoIosStats />];
+const links = ['/play', '/play/character', '/play/stats', '/play/calendar'];
+const icons = [
+  <GiChecklist />,
+  <GiCharacter />,
+  <IoIosStats />,
+  <RiCalendarTodoFill />,
+];
 
 const Sidebar = () => {
   return (

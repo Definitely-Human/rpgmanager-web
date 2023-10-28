@@ -9,6 +9,10 @@
   @apply bg-primary-400;
 }
 
+#sitemap .active {
+  @apply text-primary-600;
+}
+
 /* Firefox */
 * {
   scrollbar-width: thin;

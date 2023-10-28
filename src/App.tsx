@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Calendar from './pages/Calendar.tsx';
 import Character from './pages/Character.tsx';
 import PlayMain from './pages/PlayMain.tsx';
 import Statistics from './pages/Statistics.tsx';
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         <Route index element={<PlayMain />} />
         <Route path="character" element={<Character />} />
         <Route path="stats" element={<Statistics />} />
+        <Route path="calendar" element={<Calendar />} />
       </Route>
       <Route
         path="profile"
