@@ -15,7 +15,7 @@ const Home = () => {
     <div className="min-h-screen font-semibold dark:bg-gray-blue-800 dark:text-slate-100">
       <Header />
       <main className="max-w-screen-xl mx-auto ">
-        <div className="flex items-end pl-10 bg-gray-blue-900">
+        <div className="flex flex-col items-end px-10 lg:flex-row lg:pr-0 bg-gray-blue-900">
           <div className="py-12 text-2xl text-justify">
             <h2 className="text-5xl">
               RPG Manager - the new way of self-management!
@@ -56,7 +56,7 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <img src={Hero1Icon} className="w-5/12" alt="hero icon" />
+          <img src={Hero1Icon} className="lg:w-5/12" alt="hero icon" />
         </div>
         <div className="px-10 py-16 bg-gray-blue-700">
           <h2 className="text-5xl text-center indent-0">
@@ -105,8 +105,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-end px-10 pb-8 bg-gray-blue-900">
-          <img src={Hero2Icon} className="w-4/12" alt="hero icon" />
+        <div className="flex flex-col-reverse items-end px-10 pb-8 lg:flex-row bg-gray-blue-900">
+          <img src={Hero2Icon} className="lg:w-4/12" alt="hero icon" />
           <div className="py-12 pl-10 text-2xl text-justify">
             <h2 className="text-5xl indent-0">Play while staying organized!</h2>
             <div className="font-normal">

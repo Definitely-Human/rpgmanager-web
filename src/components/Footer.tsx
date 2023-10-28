@@ -7,7 +7,7 @@ const Footer = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   return (
     <footer className="h-[550px] bg-gray-blue-950">
-      <div className="grid max-w-screen-xl grid-cols-3 p-10 mx-auto gap-x-10">
+      <div className="grid max-w-screen-xl grid-cols-3 p-10 mx-auto lg:gap-x-10">
         <div>
           <h3 className="text-2xl">Contact us</h3>
           <form className="grid mt-3 text-lg gap-y-3 ">
@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="px-10 text-lg" id="sitemap">
           <h3 className="text-2xl">Sitemap</h3>
           <p className="mb-3 font-normal ">List of available pages.</p>
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between lg:flex-row">
             <ul>
               <li>
                 <NavLink to="/">Home</NavLink>
@@ -81,11 +81,15 @@ const Footer = () => {
           <img
             src={mainIcon}
             alt="logo"
-            className="w-4/12 mb-5 rounded-full bg-gray-blue-900"
+            className="w-8/12 mb-5 rounded-full lg:w-4/12 bg-gray-blue-900"
           />
           <p>Contact info:</p>
           <p> +48 794 512 667</p>
-          <p> humanworks247@gmail.com</p>
+          <p>
+            humanworks247
+            <br className="lg:hidden" />
+            @gmail.com
+          </p>
         </div>
       </div>
       <div className="h-10 bg-gray-blue-900 ">

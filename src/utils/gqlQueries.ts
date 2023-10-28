@@ -37,3 +37,34 @@ export const ALL_TASKS_BY_CATEGORY = gql(/* GraphQL */ `
     }
   }
 `);
+
+export const GET_TASK = gql(/* GraphQL */ `
+  query getOneTask($input: GetTaskInput!) {
+    getTask(input: $input) {
+      ok
+      error
+      task {
+        id
+        content
+        title
+        due_to
+        completion_time
+        is_complete
+        is_deleted
+        is_favorite
+        createdAt
+        updatedAt
+        category {
+          id
+          name
+        }
+        reward {
+          id
+          coins
+          experience
+          isReceived
+        }
+      }
+    }
+  }
+`);

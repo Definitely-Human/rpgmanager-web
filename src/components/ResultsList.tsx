@@ -1,6 +1,6 @@
 import { useQuery, useReactiveVar } from '@apollo/client';
 import { Task } from '../__generated__/graphql.ts';
-import { selectedCategoryVar } from '../apollo.ts';
+import { selectedCategoryVar, selectedItemVar } from '../apollo.ts';
 import { ALL_TASKS_BY_CATEGORY } from '../utils/gqlQueries.ts';
 import ResultsListItem from './ResultsListItem.tsx';
 
@@ -33,7 +33,7 @@ const ResultsList = () => {
             <th className="overflow-x-hidden p-2 w-[15%]  border-r-4 border-primary">
               Complete
             </th>
-            <th className="overflow-x-hidden p-2 w-[15%]  border-r-4 border-primary">
+            <th className="overflow-x-hidden p-2 w-[15%]  lg:border-r-4 lg:border-primary">
               Favorite
             </th>
             <th className="hidden p-2 lg:block">Tags</th>
@@ -45,13 +45,26 @@ const ResultsList = () => {
           })}
         </tbody>
       </table>
-      <button
-        type="button"
-        className="px-10 py-2 mt-3 border-4 rounded-md border-secondary hover:bg-gray-blue-800"
-        onClick={() => {}}
-      >
-        Add Task
-      </button>
+      <div className="grid grid-cols-4 gap-x-5">
+        <button
+          type="button"
+          className="px-10 py-2 mt-3 border-4 rounded-md border-secondary hover:bg-gray-blue-800"
+          onClick={() => {
+            selectedItemVar({ id: null, type: 'task' });
+          }}
+        >
+          Add Task
+        </button>
+        <button
+          type="button"
+          className="px-10 py-2 mt-3 border-4 rounded-md border-secondary hover:bg-gray-blue-800"
+          onClick={() => {
+            selectedItemVar({ id: null, type: 'list' });
+          }}
+        >
+          Add List
+        </button>
+      </div>
     </div>
   );
 };

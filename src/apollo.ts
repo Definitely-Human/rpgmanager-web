@@ -14,6 +14,13 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 export const selectedCategoryVar = makeVar<Category | null>(null);
 
+type SelectedItem = {
+  id: number | null;
+  type: 'task' | 'list';
+};
+
+export const selectedItemVar = makeVar<SelectedItem | null>(null);
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:3000/graphql',
 });
@@ -46,6 +53,11 @@ export const client = new ApolloClient({
           selectedCategory: {
             read() {
               return selectedCategoryVar();
+            },
+          },
+          selectedItem: {
+            read() {
+              return selectedItemVar();
             },
           },
         },

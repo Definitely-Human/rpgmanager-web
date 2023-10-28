@@ -19,6 +19,7 @@ const documents = {
     "\n  mutation createAccount($createAccountInput: CreateAccountInput!) {\n    createAccount(input: $createAccountInput) {\n      ok\n      error\n    }\n  }\n": types.CreateAccountDocument,
     "\n  query getAllCategories {\n    getCategories {\n      ok\n      error\n      categories {\n        id\n        name\n        parentCategoryId\n      }\n    }\n  }\n": types.GetAllCategoriesDocument,
     "\n  query getAllTasksByCategory($input: GetTasksInput) {\n    getTasks(input: $input) {\n      ok\n      error\n      tasks {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n": types.GetAllTasksByCategoryDocument,
+    "\n  query getOneTask($input: GetTaskInput!) {\n    getTask(input: $input) {\n      ok\n      error\n      task {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        createdAt\n        updatedAt\n        category {\n          id\n          name\n        }\n        reward {\n          id\n          coins\n          experience\n          isReceived\n        }\n      }\n    }\n  }\n": types.GetOneTaskDocument,
 };
 
 /**
@@ -59,6 +60,10 @@ export function gql(source: "\n  query getAllCategories {\n    getCategories {\n
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query getAllTasksByCategory($input: GetTasksInput) {\n    getTasks(input: $input) {\n      ok\n      error\n      tasks {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getAllTasksByCategory($input: GetTasksInput) {\n    getTasks(input: $input) {\n      ok\n      error\n      tasks {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query getOneTask($input: GetTaskInput!) {\n    getTask(input: $input) {\n      ok\n      error\n      task {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        createdAt\n        updatedAt\n        category {\n          id\n          name\n        }\n        reward {\n          id\n          coins\n          experience\n          isReceived\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getOneTask($input: GetTaskInput!) {\n    getTask(input: $input) {\n      ok\n      error\n      task {\n        id\n        content\n        title\n        due_to\n        completion_time\n        is_complete\n        is_deleted\n        is_favorite\n        createdAt\n        updatedAt\n        category {\n          id\n          name\n        }\n        reward {\n          id\n          coins\n          experience\n          isReceived\n        }\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
